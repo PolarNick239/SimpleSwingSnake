@@ -34,6 +34,11 @@ public class Renderer {
         int screenCenterPixelX = world.getSnake().getParts().peekFirst().x * tileWidth + tileWidth / 2;
         int screenCenterPixelY = world.getSnake().getParts().peekFirst().y * tileHeight + tileHeight / 2;
 
+        if (pixelsWidth >= tileWidth * world.getWidth() && pixelsHeight >= tileHeight * world.getHeight()) {
+            screenCenterPixelX = tileWidth * world.getWidth() / 2;
+            screenCenterPixelY = tileHeight * world.getHeight() / 2;
+        }
+
         int pixelOffsetX = screenCenterPixelX - pixelsWidth / 2;
         int pixelOffsetY = screenCenterPixelY - pixelsHeight / 2;
 
@@ -46,7 +51,6 @@ public class Renderer {
     }
 
     public void renderBackground(int tilesX, int tilesY, int[] pixels, int pixelOffsetX, int pixelOffsetY, int pixelsWidth, int pixelsHeight) {
-        // TODO: important
         for (int i = 0; i < pixels.length; ++i) {
             pixels[i] = backgroundColor;
         }
@@ -81,7 +85,7 @@ public class Renderer {
     public void renderSnake(Snake snake, int[] pixels, int pixelOffsetX, int pixelOffsetY, int pixelsWidth, int pixelsHeight) {
         for (int i = snake.getParts().size() - 1; i >= 0; --i) {
             TilePosition part = snake.getParts().get(i);
-            for (int dy = 1; dy < tileHeight - 1; ++dy) { // TODO: important
+            for (int dy = 1; dy < tileHeight - 1; ++dy) {
                 for (int dx = 1; dx < tileWidth - 1; ++dx) {
                     int x = part.x * tileWidth + dx;
                     int y = part.y * tileHeight + dy;
@@ -97,7 +101,7 @@ public class Renderer {
     }
 
     public void renderApple(TilePosition apple, int[] pixels, int pixelOffsetX, int pixelOffsetY, int pixelsWidth, int pixelsHeight) {
-        for (int dy = 1; dy < tileHeight - 1; ++dy) { // TODO: important
+        for (int dy = 1; dy < tileHeight - 1; ++dy) {
             for (int dx = 1; dx < tileWidth - 1; ++dx) {
                 int x = apple.x * tileWidth + dx;
                 int y = apple.y * tileHeight + dy;

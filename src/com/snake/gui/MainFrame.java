@@ -21,7 +21,9 @@ public class MainFrame extends JFrame implements KeyListener {
     public MainFrame(World world) throws HeadlessException {
         this.world = world;
 
-        setPreferredSize(new Dimension(640, 480));
+        setPreferredSize(new Dimension(
+                Math.min(800, WORLD_TILE_SIZE_X * TILE_SIZE + 2 * TILE_SIZE),
+                Math.min(800, WORLD_TILE_SIZE_Y * TILE_SIZE + 2 * TILE_SIZE)));
         setResizable(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         pack();
