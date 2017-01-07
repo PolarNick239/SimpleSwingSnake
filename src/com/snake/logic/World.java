@@ -48,11 +48,12 @@ public class World {
             snake.setDirection(targetDirection);
         }
 
-        snake.makeStep();
         if (checkApple()) {
             snake.eatApple();
             apple = generateApple();
         }
+
+        snake.makeStep();
         if (checkCollisions(snake.getParts().peekFirst())) {
             isSleeping = true;
             System.out.println("Snake is sleeping!");
@@ -67,7 +68,8 @@ public class World {
         }
 
         TilePosition head = snake.getParts().peekFirst();
-        if (head.x == apple.x && head.y == apple.y) {
+        TilePosition nextPosition = new TilePosition(head.x + snake.getDirection().dx, head.y + snake.getDirection().dy);
+        if (nextPosition.x == apple.x && nextPosition.y == apple.y) {
             System.out.println("Snake found apple!");
             return true;
         }
