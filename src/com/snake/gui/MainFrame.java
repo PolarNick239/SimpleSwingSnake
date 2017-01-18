@@ -60,7 +60,7 @@ public class MainFrame extends JFrame implements KeyListener {
         BufferStrategy bs = getBufferStrategy();
         Graphics g = bs.getDrawGraphics();
 
-        g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+        g.drawImage(image, 0, 0, image.getWidth(), image.getHeight(), null);
         g.dispose();
 
         bs.show();

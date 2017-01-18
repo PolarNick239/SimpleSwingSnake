@@ -23,7 +23,8 @@ public class Snake {
     }
 
     public void eatApple() {
-        this.parts.addLast(parts.peekLast());
+        TilePosition last = parts.peekLast();
+        this.parts.addLast(new TilePosition(last.x, last.y));
         System.out.println("Snake is now " + parts.size() + " tiles long!");
     }
 
